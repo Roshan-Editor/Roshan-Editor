@@ -33,3 +33,4 @@ mkdir NETWORK
 mv network.py NETWORK
 
 cd $HOME
+cd Roshan-Editor 
