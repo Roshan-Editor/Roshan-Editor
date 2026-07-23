@@ -18,3 +18,5 @@ elif num == 3:
 else:
     # Yahan apna naya music file ka naam likhein
     os.system("mpv Mahadev.mp3")
+
+#########################################################
