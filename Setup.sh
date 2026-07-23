@@ -27,8 +27,7 @@ cd $HOME
 cd Roshan-Editor 
 chmod +x login.sh delete.sh setup.sh sound_effect.py banner.sh
 mkdir Song
-# Yahan apne naye music ka naam bhi purane gaano ke sath add kar dein
-mv  Access-Granted.mp3 Jarvis2.mp3 Ram.mp3  sound_effect.py Song
+mv Access-Granted.mp3 Mahadev.mp3 Ram.mp3 sound_effect.py Song
 rm 1
 mkdir NETWORK
 mv network.py NETWORK
@@ -36,5 +35,4 @@ mv network.py NETWORK
 cd $HOME
 cd Roshan-Editor 
 
-
-
+bash login.sh
