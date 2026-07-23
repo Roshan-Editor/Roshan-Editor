@@ -21,10 +21,10 @@ echo -e "\033[31m\033[1m        INSTALLED SUCCESSFULLY \033[32m[\033[36m✓\033[
 echo -e "\033[33m\033[1m]────────────────────────────────────────────["
 termux-setup-storage
 cd $HOME
-cd Termux-Login
+cd Roshan-Editor 
 cp login.sh $PREFIX/etc
 cd $HOME
-cd Termux-Login
+cd Roshan-Editor 
 chmod +x login.sh delete.sh setup.sh sound_effect.py banner.sh
 mkdir Song
 mv Access-Granted.mp3 Jarvis2.mp3 JARVIS.mp3 sound_effect.py Song
