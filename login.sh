@@ -25,7 +25,7 @@ echo -e "\e[1;32m
             ░███▄███░░▀░▀░░░░░▀▀░░
 
 \033[31m           ────────────────────────────
-\033[33m           Login With Your \033[32mRoshan Ji 
+\033[33m           Login With Your \033[32m𓃬𓃬 Roshan Ji 𓃬𓃬
 \033[31m           ────────────────────────────
 
 \e[0m"
@@ -51,7 +51,7 @@ echo -e "\033[1m\033[33m
 ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝     ╚════╝ ╚═╝
                                                                   
 "
-echo -e  "     \e[1m\e[32m▂▃▄▅▆▇▓▒░ \033[1mCoded By \e[33mRoshan Ji \e[1m\e[32m░▒▓▇▆▅▄▃▂"
+echo -e  "     \e[1m\e[32m▂▃▄▅▆▇▓▒░ \033[1mCoded By \e[33m 𓃬𓃬 Roshan Ji 𓃬𓃬\e[1m\e[32m░▒▓▇▆▅▄▃▂"
 cd $HOME
 cd Roshan-Editor 
 
