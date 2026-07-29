@@ -45,6 +45,14 @@ cd Roshan-Editor
 ```
 ls
 ```
+```
+mkdir NETWORK
+```
+```
+nano network.py
+
+
+```
 
 
 💻 Tech Stack:
