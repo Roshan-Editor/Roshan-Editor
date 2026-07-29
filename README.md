@@ -25,17 +25,21 @@ pkg install python
 pkg install python2
 pkg install git
 pkg install mpv
+pip install requests
 ```
 
-### Installation
+### Installation In Termux 
 
-git clone 
+**Clone This Link in Termux 
 ```
-https://github.com/Roshan-Editor/Roshan-Editor.git
+git clone https://github.com/Roshan-Editor/Roshan-Editor.git
 ```
 Now go to cloned directory and run 'Roshan-Editor'
 ```
 cd Roshan-Editor
+```
+```
+ls
 ```
 
 
