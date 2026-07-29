@@ -30,7 +30,7 @@ pip install requests
 
 ### Installation In Termux 
 
-**Clone This Link in Termux 
+- **Clone This Link in Termux**
 ```
 git clone https://github.com/Roshan-Editor/Roshan-Editor.git
 ```
