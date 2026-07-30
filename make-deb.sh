@@ -1,51 +1,68 @@
 #!/bin/bash
 
-# Make Deb Package for Zphisher (^.^)
-_PACKAGE=zphisher
-_VERSION=2.3.5
+# Configuration
+_PACKAGE="roshan-editor"
+_VERSION="1.0.0"
 _ARCH="all"
+REPO_URL="https://github.com/Roshan-Editor/Roshan-Editor.git"
 PKG_NAME="${_PACKAGE}_${_VERSION}_${_ARCH}.deb"
 
-if [[ ! -e "scripts/launch.sh" ]]; then
-        echo "lauch.sh should be in the \`scripts\` Directory. Exiting..."
-        exit 1
+echo "[+] Step 1: GitHub se Roshan-Editor download kar rahe hain..."
+rm -rf Roshan-Editor
+git clone "$REPO_URL"
+
+if [ ! -d "Roshan-Editor" ]; then
+  echo "[-] Error: Tool download nahi ho saka!"
+  exit 1
 fi
 
-if [[ ${1,,} == "termux" || $(uname -o) == *'Android'* ]];then
-        _depend="ncurses-utils, proot, resolv-conf, "
-        _bin_dir="data/data/com.termux/files/"
-        _opt_dir="data/data/com.termux/files/usr/"
-        #PKG_NAME=${_PACKAGE}_${_VERSION}_${_ARCH}_termux.deb
-fi
+echo "[+] Step 2: Build Environment aur Files taiyar kar rahe hain..."
+rm -rf build_env
+mkdir -p build_env/DEBIAN
+mkdir -p build_env/data/data/com.termux/files/usr/bin
 
-_depend+="curl, php, unzip"
-_bin_dir+="usr/bin"
-_opt_dir+="opt/${_PACKAGE}"
+# Files copy karein
+cp -r Roshan-Editor/* build_env/data/data/com.termux/files/usr/bin/
+chmod +x build_env/data/data/com.termux/files/usr/bin/* 2>/dev/null || true
 
-if [[ -d "build_env" ]]; then rm -fr build_env; fi
-mkdir -p build_env
-mkdir -p ./build_env/${_bin_dir} ./build_env/$_opt_dir ./build_env/DEBIAN 
-
-cat <<- CONTROL_EOF > ./build_env/DEBIAN/control
-Package: ${_PACKAGE}
-Version: ${_VERSION}
-Architecture: ${_ARCH}
-Maintainer: @htr-tech
-Depends: ${_depend}
-Homepage: https://github.com/htr-tech/zphisher
-Description: An automated phishing tool with 30+ templates. This Tool is made for educational purpose only !
+# Control file
+cat << CONTROL_EOF > build_env/DEBIAN/control
+Package: $_PACKAGE
+Version: $_VERSION
+Architecture: $_ARCH
+Maintainer: Roshan
+Depends: bash, git, python
+Section: utils
+Priority: optional
+Description: Custom Roshan Editor tool for Termux.
 CONTROL_EOF
 
-cat <<- PRERM_EOF > ./build_env/DEBIAN/prerm
-#!/bin/bash
-rm -fr $_opt_dir
-exit 0
-PRERM_EOF
+chmod 755 build_env/DEBIAN
 
-chmod 755 ./build_env/DEBIAN
-chmod 755 ./build_env/DEBIAN/{control,prerm}
-cp -fr scripts/launch.sh ./build_env/$_bin_dir/$_PACKAGE
-chmod 755 ./build_env/$_bin_dir/$_PACKAGE
-cp -fr .github/ .sites/ LICENSE README.md zphisher.sh ./build_env/$_opt_dir
-dpkg-deb --build ./build_env ${PKG_NAME}
-rm -fr ./build_env
+echo "[+] Step 3: .deb Package bana rahe hain..."
+dpkg-deb --build build_env "$PKG_NAME"
+rm -rf build_env
+
+echo "[+] Step 4: Termux Repo Index (Packages/InRelease) generate kar rahe hain..."
+
+# Packages file banayein
+apt-ftparchive packages . > Packages
+gzip -c Packages > Packages.gz
+
+# Release file banayein
+cat << RELEASE_EOF > Release
+Origin: Roshan Repository
+Label: Roshan Tools
+Suite: stable
+Codename: termux
+Architectures: all
+Components: main
+Description: Official Repository for Roshan Tools
+RELEASE_EOF
+
+apt-ftparchive release . >> Release
+
+echo "--------------------------------------------------"
+echo "[ SUCCESS ] Aapka .deb Package aur Repo taiyar hai!"
+echo "--------------------------------------------------"
+
